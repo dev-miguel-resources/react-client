@@ -1,7 +1,10 @@
 import React from "react";
+import Error from "../components/Error";
+import img from "../images/404.png";
 
 const NotFound = () => {
-  return <div><p>Hello am NotFound!</p></div>;
+  const title = "Page not found";
+  return <Error img={img} title={title} />;
 };
 
 export default NotFound;
