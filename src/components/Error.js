@@ -1,12 +1,32 @@
 import React from "react";
 import { func, string } from "prop-types";
+import { Button } from "antd";
+import { useHistory } from "react-router-dom";
 
-const Error = ({ img, title }) => {
+const Error = ({ img, title, action }) => {
+  const history = useHistory();
+
+  const onClick = () => {
+    history.push("/");
+  };
+
   return (
-    <div>
-      <p>Hello am Error!</p>
+    <div className="error-wrapper">
+      <img alt="error-img" src={img} />
+      <h1 className="error-title">{title}</h1>
+      <Button type="primary" onClick={onClick}>
+        Go To Home
+      </Button>
     </div>
   );
 };
+
+Error.propTypes = {
+    img: string.isRequired,
+    title: string.isRequired,
+    action: func,
+};
+
+Error.defaultProps = { func: () => {} };
 
 export default Error;
