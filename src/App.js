@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { LoadingOutlined } from "@ant-design/icons";
-//import { errorBoundary } from "./helpers/errorBoundary";
+import { errorBoundary } from "./helpers/errorBoundary";
 
 // lazy loading
 const Login = lazy(() => import("./pages/auth/Login"));
@@ -40,7 +40,7 @@ const App = () => {
 };
 
 // pattern design react: HOC
-//export default errorBoundary(App);
-export default App;
+export default errorBoundary(App);
+
 
 

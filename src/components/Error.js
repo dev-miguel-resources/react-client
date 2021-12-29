@@ -5,8 +5,10 @@ import { useHistory } from "react-router-dom";
 
 const Error = ({ img, title, action }) => {
   const history = useHistory();
+  const checkIfHasActionProp = () => !!action && action();
 
   const onClick = () => {
+    checkIfHasActionProp();
     history.push("/");
   };
 

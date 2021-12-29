@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Error from "../components/Error";
 import img from "../images/warning.png";
 
-export const errorBoundary = () => {
+export const errorBoundary = (WrappedComponent) => {
   const resetError = (context) => context.setState({ error: false });
 
   return class extends Component {
