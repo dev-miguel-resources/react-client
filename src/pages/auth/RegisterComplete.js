@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "firebase";
+import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { createOrUpdateUser } from "../../functions/auth";
@@ -20,7 +20,7 @@ const RegisterComplete = ({ history }) => {
 
     if (!email || !password) {
       toast.error("Email and password is required");
-      return ;
+      return;
     }
 
     if (password.length < 6) {
@@ -44,26 +44,28 @@ const RegisterComplete = ({ history }) => {
         // redux store
         console.log("user", user, "idTokenResult", idTokenResult);
 
-        /*createOrUpdateUser(idTokenResult.token) {
+        createOrUpdateUser(idTokenResult.token)
           .then((res) => {
             dispatch({
               type: "LOGGED_IN_USER",
               payload: {
-
-              }
-            })
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
           })
-        }*/
-
-        // redirect
-        history.push("/");
-
+          .catch((err) => console.log(err));
       }
+
+      // redirect
+      history.push("/");
     } catch (err) {
       console.log(err);
       toast.error(err.message);
     }
-
   };
 
   const completeRegistrationForm = () => (

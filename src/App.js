@@ -17,6 +17,7 @@ const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => {
+
   return (
     <Suspense
       fallback={
