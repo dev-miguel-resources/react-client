@@ -23,7 +23,6 @@ const Error = ({ img, title, action }) => {
   );
 };
 
-// props-documentation
 Error.propTypes = {
     img: string.isRequired,
     title: string.isRequired,
