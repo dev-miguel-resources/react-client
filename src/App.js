@@ -1,9 +1,7 @@
-import React, { lazy, Suspense, useEffect, useCallback } from "react";
+import React, { lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { auth } from "./firebase";
-import { useDispatch } from "react-redux";
 import { LoadingOutlined } from "@ant-design/icons";
 import { errorBoundary } from "./helpers/errorBoundary";
 
