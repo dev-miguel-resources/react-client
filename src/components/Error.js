@@ -1,14 +1,11 @@
 import React from "react";
-import { func, string } from "prop-types";
 import { Button } from "antd";
 import { useHistory } from "react-router-dom";
 
-const Error = ({ img, title, action }) => {
+const Error = ({ img, title }) => {
   const history = useHistory();
-  const checkIfHasActionProp = () => !!action && action();
 
   const onClick = () => {
-    checkIfHasActionProp();
     history.push("/");
   };
 
@@ -22,13 +19,5 @@ const Error = ({ img, title, action }) => {
     </div>
   );
 };
-
-Error.propTypes = {
-    img: string.isRequired,
-    title: string.isRequired,
-    action: func,
-};
-
-Error.defaultProps = { func: () => {} };
 
 export default Error;

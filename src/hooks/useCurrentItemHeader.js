@@ -1,4 +1,5 @@
-import { useEffect, useState, useCallback } from "react";
+//import { useMemo, useLayoutEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -11,10 +12,8 @@ const useCurrentItemHeader = () => {
   const dispatchKey = useCallback(
     (payload) => dispatch({ type: "SET_KEY_ITEM", payload }),
     [dispatch]
-  );
+  ); 
 
-  // useCallback: guarda la function
-  // useMemo: guarda el resultado de una function
   const checkCurrentPage = useCallback(() => {
     const availablePages = {
       home: "home",
@@ -32,19 +31,20 @@ const useCurrentItemHeader = () => {
     dispatchKey(payload);
   }, [dispatchKey, header, history.location.pathname]);
 
-  const checkIfKeyContainsValue = useCallback(
-    () => !key && checkCurrentPage(),
-    [checkCurrentPage, key]
-  );
+  const checkIfKeyContainsValue = () => {
 
-  // mount, update, destroy 
-  useEffect(
-    () => checkIfKeyContainsValue(),
-    [checkCurrentPage, checkIfKeyContainsValue]
-  );
+  };
 
-  return { setKey: (key) => setKey(dispatchKey(key)) };
+  // ciclo de vida: mount, update, willunmount
+  useEffect(() => {
+    
+  }, []);
+
+  return <div>Hello am useCurrentItemHeader!</div>;
 };
 
 export default useCurrentItemHeader;
 
+// useCallback: memoriza los valores de una función => "home", etc...
+// useMemo: memoriza el nombre de la función => checkCurrentPage
+// useEffect: mejor performance vs useLayoutEffect
