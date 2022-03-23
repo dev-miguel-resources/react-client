@@ -45,6 +45,6 @@ const useCurrentItemHeader = () => {
 
 export default useCurrentItemHeader;
 
-// useCallback: memoriza los valores de una función => "home", etc...
-// useMemo: memoriza el nombre de la función => checkCurrentPage
+// useCallback: memoriza un callback optimizado => checkCurrentPage
+// useMemo: memoriza los valores retornados de un callback => "home", etc...
 // useEffect: mejor performance vs useLayoutEffect
