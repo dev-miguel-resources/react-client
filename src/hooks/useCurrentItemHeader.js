@@ -12,7 +12,7 @@ const useCurrentItemHeader = () => {
   const dispatchKey = useCallback(
     (payload) => dispatch({ type: "SET_KEY_ITEM", payload }),
     [dispatch]
-  ); 
+  );
 
   const checkCurrentPage = useCallback(() => {
     const availablePages = {
@@ -31,16 +31,15 @@ const useCurrentItemHeader = () => {
     dispatchKey(payload);
   }, [dispatchKey, header, history.location.pathname]);
 
-  const checkIfKeyContainsValue = () => {
-
-  };
+  const checkIfKeyContainsValue = useCallback(
+    () => !key && checkCurrentPage(),
+    [checkCurrentPage, key]
+  );
 
   // ciclo de vida: mount, update, willunmount
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => checkIfKeyContainsValue(), [checkIfKeyContainsValue]);
 
-  return <div>Hello am useCurrentItemHeader!</div>;
+  return { setKey: (key) => setKey(dispatchKey(key)) };
 };
 
 export default useCurrentItemHeader;

@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LoadingOutlined } from "@ant-design/icons";
-//import { errorBoundary } from "./helpers/errorBoundary";
+import { errorBoundary } from "./helpers/errorBoundary";
 
 // lazy loading
 const Login = lazy(() => import("./pages/auth/Login"));
@@ -37,7 +37,8 @@ const App = () => {
 };
 
 // pattern design react: HOC
-export default App;
+export default errorBoundary(App);
+
 
 
 

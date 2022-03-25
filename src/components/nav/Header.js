@@ -14,12 +14,12 @@ import firebase from "firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Search from "../forms/Search";
-//import useCurrentItemHeader from "../../hooks/useCurrentItemHeader";
+import useCurrentItemHeader from "../../hooks/useCurrentItemHeader";
 
 const { SubMenu, Item } = Menu;
 
 const Header = () => {
-  // key
+  const { setKey } = useCurrentItemHeader();
   const dispatch = useDispatch();
   const history = useHistory();
   const { cart, header, user } = useSelector((state) => ({ ...state }));
@@ -31,7 +31,11 @@ const Header = () => {
   };
 
   return (
-    <Menu onClick={{}} selectedKeys={[header]} mode="horizontal">
+    <Menu
+      onClick={({ key }) => setKey(key)}
+      selectedKeys={[header]}
+      mode="horizontal"
+    >
       <Item key="home" icon={<AppstoreOutlined />}>
         <Link to="/">Home</Link>
       </Item>
