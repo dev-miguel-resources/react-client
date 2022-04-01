@@ -14,7 +14,7 @@ const RegisterComplete = lazy(() => import("./pages/auth/RegisterComplete"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => {
-
+  
   return (
     <Suspense
       fallback={
